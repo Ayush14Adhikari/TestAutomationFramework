@@ -14,6 +14,7 @@ import com.utility.LoggerUtility;
 @Listeners({com.ui.listners.TestListner.class})
 public class LoginTest extends TestBase{
 	
+	Logger logger = LoggerUtility.getLogger(this.getClass());
 	@Test(description="Verify if valid user is able to login",groups= {"end to end","sanity"},dataProviderClass = com.ui.dataProviders.LoginDataProvider.class,dataProvider = "LoginTestDataProvider",retryAnalyzer = com.ui.listners.RetryAnalyzer.class)
 	public void loginTestJson(User user) {
 	

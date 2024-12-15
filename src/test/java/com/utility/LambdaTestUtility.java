@@ -22,6 +22,7 @@ public class LambdaTestUtility {
          ltOptions.put("user", "ayush13091993");
          ltOptions.put("accessKey", "Xq1NnSajVg8HkrKtKPa2KxmIgsfK3VkcptYvlX8xuBSnH2wNey");
          ltOptions.put("build", "Selenium 4");
+         System.out.println(testName);
          ltOptions.put("name", testName);
          ltOptions.put("platformName", "Windows 10");
          ltOptions.put("seCdp", true);

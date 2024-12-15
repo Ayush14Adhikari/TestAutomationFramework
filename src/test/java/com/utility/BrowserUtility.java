@@ -30,15 +30,15 @@ public class BrowserUtility {
 
 	}
 
-//	public BrowserUtility(Browser browserName) {
-//		if (browserName == Browser.CHROME)
-//			driver.set(new ChromeDriver());
-//		else if (browserName == Browser.EDGE)
-//			driver.set(new EdgeDriver());
-//		else
-//			logger.error("Please select correct browser");
-//
-//	}
+	public BrowserUtility(Browser browserName) {
+		if (browserName == Browser.CHROME)
+			driver.set(new ChromeDriver());
+		else if (browserName == Browser.EDGE)
+			driver.set(new EdgeDriver());
+		else
+			logger.error("Please select correct browser");
+
+	}
 
 	public BrowserUtility(Browser browserName, boolean isHeadless) {
 		if (browserName == Browser.CHROME) {
