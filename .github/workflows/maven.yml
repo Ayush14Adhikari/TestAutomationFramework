@@ -1,9 +1,8 @@
-
 name: Test Automation WorkFlow
 
 on:
   schedule:
-  - cron: 00 18 * * *
+    - cron: "00 18 * * *"
   push:
     branches: [ "master" ]
   pull_request:
@@ -11,11 +10,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    
     - uses: actions/checkout@v4
     
     - name: Set up JDK 17
@@ -25,28 +22,32 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
+    - name: Ensure Logs and Screenshots Folders Exist
+      run: |
+        mkdir -p logs screenshots
+    
     - name: Running Test Automation Framework with Maven
-      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
+      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=false
      
-    - name: Upload  Test logs
+    - name: Upload Test Logs
       if: always()
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4
       with:
-       name: Test logs
-       path: logs/
+        name: Test Logs - ${{ github.run_id }}
+        path: logs/
 
-    - name: Upload Screenshots as Artifacts
+    - name: Upload Screenshots
       if: always()
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4
       with:
-        name: screenshots
+        name: Screenshots - ${{ github.run_id }}
         path: screenshots/
 
-    - name: Upload HTML Report as Artifact
+    - name: Upload HTML Report
       if: always()
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4
       with:
-        name: html-report
+        name: HTML Report - ${{ github.run_id }}
         path: report.html
        
     - name: Test Execution Status
@@ -55,17 +56,16 @@ jobs:
 
     - name: Copy Report to gh-pages Folder
       if: always()
-
       run: |
         mkdir -p public/extent-reports
-        cp -R report.html  public/extent-reports/
+        cp -R report.html public/extent-reports/
         cp -R screenshots/ public/extent-reports/screenshots/
-        ls -l
+        ls -l public/extent-reports/
 
-    - name: Deploy 🚀
+    - name: Deploy Report to GitHub Pages
       if: always()
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: public/extent-reports/
+        folder: public/
         token: ${{ secrets.PAT2024 }}
         clean: true
