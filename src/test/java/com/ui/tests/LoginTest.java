@@ -21,15 +21,15 @@ public class LoginTest extends TestBase{
 	assertEquals(homePage.goToLoginPage().doLogin(user.getEmailAddress(), user.getPassword()).getUserName(),"Ayush Adhikari");
 
 	}
-//	@Test(description="Verify if valid user is able to login",groups= {"end to end","sanity"},dataProviderClass = com.ui.dataProviders.LoginDataProvider.class,dataProvider = "LoginCSVDataProvider",retryAnalyzer = com.ui.listners.RetryAnalyzer.class)
-//	public void loginTestCSV(User user) {
-//	
-//	assertEquals(homePage.goToLoginPage().doLogin(user.getEmailAddress(), user.getPassword()).getUserName(),"Ayush Adhikari");
-//	}
-//	
-//	@Test(description="Verify if valid user is able to login",groups= {"end to end","sanity"},dataProviderClass = com.ui.dataProviders.LoginDataProvider.class,dataProvider = "LoginExcelDataProvider")
-//	public void loginTestExcel(User user) {
-//	
-//	assertEquals(homePage.goToLoginPage().doLogin(user.getEmailAddress(), user.getPassword()).getUserName(),"Ayush Adhikari");
-//	}
+	@Test(description="Verify if valid user is able to login",groups= {"end to end","sanity"},dataProviderClass = com.ui.dataProviders.LoginDataProvider.class,dataProvider = "LoginCSVDataProvider",retryAnalyzer = com.ui.listners.RetryAnalyzer.class)
+	public void loginTestCSV(User user) {
+	
+	assertEquals(homePage.goToLoginPage().doLogin(user.getEmailAddress(), user.getPassword()).getUserName(),"Ayush Adhikari");
+	}
+	
+	@Test(description="Verify if valid user is able to login",groups= {"end to end","sanity"},dataProviderClass = com.ui.dataProviders.LoginDataProvider.class,dataProvider = "LoginExcelDataProvider")
+	public void loginTestExcel(User user) {
+	
+	assertEquals(homePage.goToLoginPage().doLogin(user.getEmailAddress(), user.getPassword()).getUserName(),"Ayush Adhikari");
+	}
 }
