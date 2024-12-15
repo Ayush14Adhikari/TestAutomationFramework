@@ -113,7 +113,7 @@ public class BrowserUtility {
 
 		// Timestamp for uniqueness
 		String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		String screenshotPath = System.getProperty("user.dir") + "/screenshots/" + testName + "-" + timestamp + ".png";
+		String screenshotPath = "./screenshots/" + testName + "-" + timestamp + ".png";
 		File screenshotFile = new File(screenshotPath);
 
 		try {
